@@ -1,13 +1,314 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SonoSurgeon</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="SonoSurgeon: Learning Ultrasound-Guided Navigation and Drilling for Robotic Spinal Surgery"/>
+  <meta property="og:description" content="A learning-based framework that couples ultrasound-guided probe navigation with ultrasound-guided drilling for robotic spinal surgery, evaluated on a dual-KUKA manipulator setup and a Unitree G1 humanoid."/>
+  <meta property="og:url" content="https://sonosurgeon.github.io/"/>
+  <meta property="og:image" content="https://sonosurgeon.github.io/static/images/front.png"/>
+  <meta name="description" content="SonoSurgeon: a learning-based framework coupling ultrasound-guided probe navigation with ultrasound-guided drilling for robotic spinal surgery, via dual-policy optimization.">
+  <title>SonoSurgeon: Learning Ultrasound-Guided Navigation and Drilling for Robotic Spinal Surgery</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="icon" href="./static/images/icon.png" sizes="128x128">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
 </head>
 <body>
-  <h1>SonoSurgeon</h1>
-  <h2>Autonomous Ultrasound-Guided Spinal Surgery</h2>
-  <p>Official project page. Website under construction.</p>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">SonoSurgeon</h1>
+          <h2 class="subtitle is-4 publication-title" style="margin-top: 0.25em;">
+            Learning Ultrasound-Guided Navigation and Drilling for Robotic Spinal Surgery
+          </h2>
+
+          <!-- TODO: replace with real author names / links / affiliations -->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block author-note">Author names placeholder<sup>1,2</sup></span>
+          </div>
+          <div class="is-size-6 publication-authors author-note">
+            <span class="author-block">&nbsp;<sup>1</sup>Affiliation placeholder&nbsp; &nbsp;<sup>2</sup>Affiliation placeholder</span>
+          </div>
+
+          <div class="column has-text-centered" style="margin-top: 1em;">
+            <div class="publication-links">
+              <!-- Paper: point this at the compiled PDF once available in static/pdf/ -->
+              <span class="link-block">
+                <a href="./static/pdf/sonosurgeon_paper.pdf" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- arXiv: not yet submitted; disabled until a real link exists -->
+              <span class="link-block">
+                <a href="#" onclick="return false;" title="arXiv link will be added upon submission"
+                   class="external-link button is-normal is-rounded is-dark" style="opacity: 0.55; cursor: not-allowed;">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>arXiv (soon)</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#video" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-video"></i></span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- <span class="link-block">
+                <a href="#bibtex" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-quote-right"></i></span>
+                  <span>BibTeX</span>
+                </a>
+              </span> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <figure>
+        <img src="./static/images/front.png" alt="SonoSurgeon humanoid execution overview">
+        <figcaption>
+          A Unitree G1 humanoid operates an ultrasound probe and a surgical drill as bimanual tools within a single <strong>coupled</strong> workflow: <strong>(c)</strong> the navigation policy positions and stabilizes the probe on the patient's back, and <strong>(a)</strong> the drilling policy guides the drill along the planned insertion trajectory using the ultrasound image streamed live from that same actively-navigated probe.
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="video">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <!-- TODO: replace this placeholder with the main project video, e.g.
+             <video src="./static/videos/main.mp4" autoplay muted loop playsinline controls width="100%"></video> -->
+        <div class="video-placeholder">
+          <span class="icon"><i class="fas fa-video"></i></span>
+          <p>Main demonstration video coming soon.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="abstract">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Ultrasound is a real-time, non-invasive medical imaging modality which is well suited for intraoperative guidance in robotic surgery. However, the effectiveness of ultrasound guidance depends critically on acquiring and maintaining an appropriate imaging configuration. Existing approaches separate ultrasound probe navigation from surgical manipulation, overlooking how the imaging configuration affects the downstream surgical task. In this work, we present SonoSurgeon, a learning-based framework that couples probe navigation with ultrasound-guided drilling for robotic spine surgery. The system comprises two learned skills: probe navigation, which acquires and maintains a target configuration over the vertebra, and ultrasound-guided drilling, which uses ultrasound observations and the relative tool pose to execute a planned insertion trajectory. To couple these components, we introduce a dual-policy optimization pipeline, which selects the probe configuration according to downstream drilling performance before adapting the drilling policy under actively guided imaging conditions.
+          </p>
+          <p>
+            We evaluate SonoSurgeon on five patient anatomical models using both a dual-KUKA LBR Med14 setup and a Unitree G1 humanoid. Simulation results show that dual-policy optimization reduces radial drilling error and increases achieved drilling depth relative to the nominal configuration while maintaining safety-ratio above 99%. The results demonstrate the feasibility of integrating learned ultrasound sensing and drilling into a single workflow and highlight the importance of selecting sensing configurations according to the requirements of the downstream drilling task.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="method">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <h2 class="title is-3 has-text-centered">Method</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            SonoSurgeon couples two learned skills&mdash;<strong>probe navigation</strong> and <strong>ultrasound-guided drilling</strong>&mdash;into one workflow, evaluated on five patient models with a dual-KUKA&nbsp;LBR&nbsp;Med14 setup and a Unitree&nbsp;G1 humanoid holding the probe and drill as bimanual tools.
+          </p>
+        </div>
+        <figure>
+          <img src="./static/images/schema.png" alt="Overview of the SonoSurgeon workflow and dual-policy optimization pipeline">
+          <figcaption>
+            The navigation policy drives the probe to a target scanning configuration from a 2D ultrasound image; the drilling policy controls the drill along a planned trajectory from the resulting 3D ultrasound stack. Dual-policy optimization then selects the probe target for downstream drilling performance and fine-tunes drilling under active guidance.
+          </figcaption>
+        </figure>
+
+        <div class="columns is-centered" style="margin-top: 2.5rem;">
+          <div class="column is-half content">
+            <h3 class="title is-5">Probe navigation</h3>
+            <p>A learned policy reads the 2D ultrasound image and drives the probe to a target scanning configuration on the patient's back.</p>
+          </div>
+          <div class="column is-half content">
+            <h3 class="title is-5">Ultrasound-guided drilling</h3>
+            <p>A second policy reads the 3D ultrasound volume and the drill-probe relative pose to guide the drill safely along a planned pedicle-screw trajectory.</p>
+          </div>
+        </div>
+
+        <h3 class="title is-4" style="margin-top: 1rem;">Dual-policy optimization</h3>
+        <div class="content has-text-justified">
+          <p>
+            A probe view chosen for anatomical clarity is not necessarily best for drilling. We instead select the probe target by downstream drilling performance:
+          </p>
+        </div>
+        <ol class="pipeline-steps">
+          <li>Pre-train drilling with the probe fixed at randomized views</li>
+          <li>Search for the probe target that maximizes drilling performance with Cross-entropy Method (CEM)</li>
+          <li>Train the navigation policy to reach that optimized target</li>
+          <li>Fine-tune drilling under the actively guided probe</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="results">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <h2 class="title is-3 has-text-centered">Results</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            Evaluated across five patient models and both embodiments, the coupled navigation+drilling workflow runs safely (SR&nbsp;&gt;&nbsp;99%), and dual-policy optimization improves it further on both platforms.
+          </p>
+        </div>
+
+        <div class="table-container">
+          <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth results-table">
+            <caption style="caption-side: top; text-align: left; margin-bottom: 0.5em;">
+              Ultrasound-guided probe navigation performance (mean &plusmn; std across five patient models).
+            </caption>
+            <thead>
+              <tr><th>Setting</th><th>Embodiment</th><th>Pos. err. [mm]</th><th>Ang. err. [deg]</th></tr>
+            </thead>
+            <tbody>
+              <tr><td rowspan="2">Baseline</td><td>KUKA LBR Med14</td><td>1.58 &plusmn; 4.39</td><td>0.86 &plusmn; 3.63</td></tr>
+              <tr><td>Unitree G1</td><td>2.82 &plusmn; 3.54</td><td>2.48 &plusmn; 5.27</td></tr>
+              <tr><td rowspan="2">Optimized</td><td>Dual KUKA Med14</td><td>0.88 &plusmn; 0.97</td><td>0.44 &plusmn; 0.95</td></tr>
+              <tr><td>Unitree G1</td><td>1.79 &plusmn; 3.25</td><td>2.40 &plusmn; 3.77</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-container" style="margin-top: 2rem;">
+          <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth results-table">
+            <caption style="caption-side: top; text-align: left; margin-bottom: 0.5em;">
+              Ultrasound-guided drilling performance across robotic embodiments (mean &plusmn; std across five patient models; SR = safe-corridor ratio, fixed radius 7.5&nbsp;mm).
+            </caption>
+            <thead>
+              <tr><th>Setting</th><th>Embodiment</th><th>Radial err. [mm]</th><th>Angular err. [deg]</th><th>Drilling depth [%]</th><th>SR [%]</th></tr>
+            </thead>
+            <tbody>
+              <tr><td rowspan="2">Baseline task</td><td>KUKA LBR Med14</td><td>2.39 &plusmn; 2.76</td><td>0.69 &plusmn; 0.84</td><td>65.85 &plusmn; 13.14</td><td>99.37</td></tr>
+              <tr><td>Unitree G1</td><td>3.48 &plusmn; 1.34</td><td>3.83 &plusmn; 2.78</td><td>57.07 &plusmn; 8.66</td><td>99.22</td></tr>
+              <tr><td rowspan="2">Dual-policy optimization</td><td>KUKA LBR Med14</td><td>0.74 &plusmn; 0.54</td><td>0.88 &plusmn; 0.64</td><td>71.95 &plusmn; 3.38</td><td>99.81</td></tr>
+              <tr><td>Unitree G1</td><td>2.32 &plusmn; 1.19</td><td>2.58 &plusmn; 1.20</td><td>76.26 &plusmn; 5.69</td><td>99.28</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="title is-4" style="margin-top: 2.5rem;">Probe-target sensitivity</h3>
+        <div class="content has-text-justified">
+          <p>
+            Drilling performance is sensitive to where the probe looks from. Scoring candidate probe targets with CEM converges to a better configuration than the nominal view, and the optimum shifts with each robot's kinematics&mdash;reducing radial error (KUKA: 2.39&rarr;0.74&nbsp;mm; G1: 3.48&rarr;2.32&nbsp;mm) and increasing drilling depth (KUKA: 65.85%&rarr;71.95%; G1: 57.07%&rarr;76.26%).
+          </p>
+        </div>
+        <div class="columns is-centered is-vcentered">
+          <div class="column is-two-fifths">
+            <figure>
+              <img src="./static/images/cem_convergence.png" alt="CEM optimization convergence for probe target selection">
+              <figcaption>CEM convergence of the probe target for both embodiments.</figcaption>
+            </figure>
+          </div>
+        </div>
+        <figure style="margin-top: 1.5rem;">
+          <img src="./static/images/probe_sensitivity_heatmap.png" alt="Probe-target sensitivity heatmaps across patients and embodiments">
+          <figcaption>
+            Drilling performance across probe-target translations, per patient model (columns) and embodiment (rows). Markers show nominal vs. optimized targets.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="section" id="discussion">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">Limitations</h2>
+        <ul class="limitations-list content">
+          <li><strong>Simulation only</strong> &mdash; not yet validated on real hardware.</li>
+          <li><strong>Rigid patient model</strong> &mdash; no soft-tissue deformation, probe pressure, or breathing.</li>
+          <li><strong>Kinematics-only drilling</strong> &mdash; no contact forces or drill-bone dynamics.</li>
+          <li><strong>Per-patient policies</strong> &mdash; cross-patient generalization untested.</li>
+          <li><strong>Fixed-base G1</strong> &mdash; no whole-body balance or mobility.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<section class="section" id="bibtex">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <!-- TODO: update authors, venue, and year once finalized -->
+    <pre><code>@article{sonosurgeon2026,
+  title   = {SonoSurgeon: Learning Ultrasound-Guided Navigation and Drilling for Robotic Spinal Surgery},
+  author  = {Author names placeholder},
+  journal = {arXiv preprint},
+  year    = {2026}
+}</code></pre>
+  </div>
+</section>
+
+<section class="section" id="acknowledgments">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Acknowledgments</h2>
+    <p>
+      SonoSurgeon builds on the robotic ultrasound simulation backbone of <a href="https://arxiv.org/abs/2507.01152" target="_blank" rel="noopener noreferrer">SonoGym</a>, implemented in <a href="https://github.com/isaac-sim/IsaacLab" target="_blank" rel="noopener noreferrer">IsaacLab</a>.
+      Humanoid whole-arm inverse kinematics is solved with <a href="https://github.com/stephane-caron/pink" target="_blank" rel="noopener noreferrer">Pink</a>, and patient anatomical models are derived from the TotalSegmentator dataset. We gratefully acknowledge these open-source communities and contributors.
+    </p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered">
+          <p>
+            This website is adapted from the <a rel="license" href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> project page template, licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>

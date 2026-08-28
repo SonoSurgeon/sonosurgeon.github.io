@@ -1,0 +1,161 @@
+body {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+section {
+  margin: 0 0;
+}
+
+.footer .icon-link {
+  font-size: 25px;
+  color: #000;
+}
+
+.link-block a {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.teaser .hero-body {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+.teaser {
+  font-family: 'Google Sans', sans-serif;
+}
+
+.publication-title {
+  font-family: 'Google Sans', sans-serif;
+}
+
+.publication-authors {
+  font-family: 'Google Sans', sans-serif;
+}
+
+.publication-authors a {
+  color: hsl(204, 86%, 53%) !important;
+}
+
+.publication-authors a:hover {
+  text-decoration: underline;
+}
+
+.author-block {
+  display: inline-block;
+}
+
+.author-note {
+  color: #888;
+  font-style: italic;
+}
+
+.publication-venue {
+  color: #555;
+  width: fit-content;
+  font-weight: bold;
+}
+
+figure img {
+  border-radius: 6px;
+}
+
+figcaption {
+  font-size: 0.95rem;
+  color: #444;
+  text-align: left;
+  margin-top: 0.75rem;
+  line-height: 1.5;
+}
+
+.content h2.title {
+  margin-bottom: 1rem;
+}
+
+.section-block {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.video-placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: repeating-linear-gradient(
+    135deg,
+    #f2f2f2,
+    #f2f2f2 10px,
+    #e8e8e8 10px,
+    #e8e8e8 20px
+  );
+  border: 2px dashed #bbb;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #777;
+}
+
+.video-placeholder .icon {
+  font-size: 3rem;
+  margin-bottom: 0.75rem;
+  color: #999;
+}
+
+.pipeline-steps {
+  counter-reset: step;
+  list-style: none;
+  padding-left: 0;
+  text-align: left;
+}
+
+.pipeline-steps li {
+  counter-increment: step;
+  position: relative;
+  padding-left: 3rem;
+  margin-bottom: 1.1rem;
+}
+
+.pipeline-steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: hsl(204, 86%, 53%);
+  color: #fff;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.task-space-table td, .task-space-table th {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.limitations-list {
+  text-align: left;
+}
+
+.results-table {
+  font-size: 0.95rem;
+}
+
+.results-table th {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.results-table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.results-table td:first-child,
+.results-table th:first-child {
+  text-align: left;
+}
