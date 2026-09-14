@@ -77,6 +77,26 @@ figcaption {
   padding-bottom: 1.5rem;
 }
 
+.video-pair-container {
+  max-width: 1536px;
+}
+
+.video-pair-second {
+  align-self: flex-end;
+}
+
+.video-pair-container video {
+  display: block;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+}
+
+@media screen and (max-width: 768px) {
+  .video-pair-second {
+    padding-top: 0;
+  }
+}
+
 .video-placeholder {
   width: 100%;
   aspect-ratio: 16 / 9;

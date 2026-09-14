@@ -108,11 +108,18 @@
 </section>
 
 <section class="section" id="video">
-  <div class="container is-max-desktop">
+  <div class="container video-pair-container">
     <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
+      <div class="column">
         <h2 class="title is-3">Video</h2>
         <video src="./static/videos/main.mp4"
+               autoplay muted loop playsinline controls preload="metadata"
+               width="100%">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="column video-pair-second">
+        <video src="./static/videos/kukasurg.mp4"
                autoplay muted loop playsinline controls preload="metadata"
                width="100%">
           Your browser does not support the video tag.
