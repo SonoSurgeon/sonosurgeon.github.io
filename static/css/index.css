@@ -78,23 +78,33 @@ figcaption {
 }
 
 .video-pair-container {
-  max-width: 1536px;
+  max-width: 960px;
 }
 
-.video-pair-second {
-  align-self: flex-end;
+.video-pair-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.video-pair-item {
+  width: 100%;
+  max-width: 680px;
 }
 
 .video-pair-container video {
   display: block;
+  width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: contain;
+  border-radius: 6px;
 }
 
-@media screen and (max-width: 768px) {
-  .video-pair-second {
-    padding-top: 0;
-  }
+.video-caption {
+  margin-top: 0.6rem;
+  font-size: 0.95rem;
+  color: #444;
 }
 
 .video-placeholder {

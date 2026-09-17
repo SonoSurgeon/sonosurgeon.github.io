@@ -46,17 +46,7 @@
             Learning Ultrasound-Guided Navigation and Drilling for Robotic Spine Surgery
           </h2>
 
-          <div class="is-size-5 publication-authors">
-            <span class="author-block author-note">Anonymous Author(s)</span>
-          </div>
-          <div class="is-size-6 publication-authors author-note">
-            <span class="author-block">Anonymous Institution(s)</span>
-          </div>
-          <div class="is-size-6 publication-authors author-note">
-            <span class="author-block">Submission under double-blind review</span>
-          </div>
-
-          <div class="column has-text-centered" style="margin-top: 1em;">
+          <div class="column has-text-centered" style="margin-top: 1.5em;">
             <div class="publication-links">
               <!-- Paper: point this at the compiled PDF once available in static/pdf/ -->
               <span class="link-block">
@@ -94,6 +84,30 @@
   </div>
 </section>
 
+<section class="section" id="video">
+  <div class="container video-pair-container has-text-centered">
+    <h2 class="title is-3">Video</h2>
+    <div class="video-pair-stack">
+      <div class="video-pair-item">
+        <video src="./static/videos/main.mp4"
+               autoplay muted loop playsinline controls preload="metadata"
+               width="100%">
+          Your browser does not support the video tag.
+        </video>
+        <p class="video-caption">Unitree G1 humanoid</p>
+      </div>
+      <div class="video-pair-item">
+        <video src="./static/videos/kukasurg.mp4"
+               autoplay muted loop playsinline controls preload="metadata"
+               width="100%">
+          Your browser does not support the video tag.
+        </video>
+        <p class="video-caption">Dual-KUKA&nbsp;LBR&nbsp;Med14</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
@@ -103,28 +117,6 @@
           A Unitree G1 humanoid operates the ultrasound probe with one arm and the surgical drill with the other (center): the probe arm navigates to a target scanning view over the vertebra from live ultrasound feedback (right), while the drill arm advances along a planned insertion trajectory using the volumetric ultrasound image streamed from that same actively-navigated probe (left). A dual-KUKA&nbsp;LBR&nbsp;Med14 setup operates the same two tools (inset).
         </figcaption>
       </figure>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="video">
-  <div class="container video-pair-container">
-    <div class="columns is-centered has-text-centered">
-      <div class="column">
-        <h2 class="title is-3">Video</h2>
-        <video src="./static/videos/main.mp4"
-               autoplay muted loop playsinline controls preload="metadata"
-               width="100%">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div class="column video-pair-second">
-        <video src="./static/videos/kukasurg.mp4"
-               autoplay muted loop playsinline controls preload="metadata"
-               width="100%">
-          Your browser does not support the video tag.
-        </video>
-      </div>
     </div>
   </div>
 </section>
